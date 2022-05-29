@@ -9,7 +9,7 @@
 {% if person.image == '' %}
 <img alt="profile image"
      class="img-60 rounded-circle lazyloaded blur-up"
-     src="">
+     src="{% static 'Portal/assets/images/default_image.png' %}">
 {% else %}
 <img alt="profile image"
      class="img-60 rounded-circle lazyloaded blur-up"
@@ -59,7 +59,13 @@
                 <div class="card">
                     <div class="card-body">
                         <div class="profile-details text-center">
+                            {% if person.image == '' %}
+                            <img alt="profile image"
+                             class="img-60 rounded-circle lazyloaded blur-up"
+                             src="{% static 'Portal/assets/images/default_image.png' %}">
+                            {% else %}
                             <img data-src="{{ person.image }}" alt="profile image" class="img-fluid img-90 rounded-circle blur-up lazyloaded">
+                            {% endif %}
                             <h5 class="f-w-600 mb-0">{{ person.last_name }} {{ person.first_name }}</h5>
                             <span>{{ person.email }}</span>
                         </div>
