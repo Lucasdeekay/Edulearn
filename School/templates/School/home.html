@@ -1,0 +1,344 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<!-- Hero Start -->
+<div class="hero-section section d-lg-flex align-items-lg-start justify-content-lg-center">
+
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6">
+                <!-- Hero Content Start -->
+                <div class="hero-content">
+                    <h4><i class="fa fa-rocket mx-2"></i>WE ARE BEST<i class="fa fa-star-o"></i></h4>
+                    <div>
+                        <h2>CHOOSE <span><i class="fa fa-trophy mx-2"></i>BEST</span> FOR YOUR CHILD</h2>
+                            <p>We here at <strong>Edulearn</strong> provides best education <br /> to your little one</p>
+                    </div>
+                    <div class="hero-info-list">
+                        <ul>
+                            <li>
+                                <i class="flaticon-check"></i>
+                                <span>Quality Education</span>
+                            </li>
+                            <li>
+                                <i class="flaticon-check"></i>
+                                <span>Proper Learning</span>
+                            </li>
+                            <li>
+                                <i class="flaticon-check"></i>
+                                <span>Conducive Learning Environment</span>
+                            </li>
+                            <li>
+                                <i class="flaticon-check"></i>
+                                <span>Qualified Teachers</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- Hero Content End -->
+            </div>
+        </div>
+    </div>
+    <!-- Hero Image Start -->
+    <div class="hero-images">
+        <div class="image">
+            <img src="{% static 'School/assets/images/hero-img.png' %}" alt="">
+        </div>
+        <div class="shape-1 parallaxed">
+            <img src="{% static 'School/assets/images/shape/shape-1.png' %}" alt="">
+        </div>
+        <div class="shape-2 parallaxed">
+            <img src="{% static 'School/assets/images/shape/shape-2.png' %}" alt="">
+        </div>
+        <!-- Hero Image End -->
+    </div>
+
+</div>
+<!-- Hero End -->
+
+<!-- Global Learner Start -->
+<div class="section global-learner-section section-padding-02">
+    <div class="container">
+        <!-- Global Learner Wrapper Start -->
+        <div class="global-learner-wrapper">
+            <!-- Global Learner Content Start -->
+            <div class="global-learner-content">
+                <h3><i class="fa fa-paper-plane"></i> We are here to oversee and bring out the best and nurture to greater heights <i class="fa fa-paper-plane"></i></h3>
+            </div>
+            <!-- Global Learner Content End -->
+            <!-- Global Learner Content Start -->
+            <div class="learner-courses-content">
+                <div class="single-item learner">
+                    <h3 class="number">4,50303</h3>
+                    <span>Learners</span>
+                </div>
+                <div class="single-item courses">
+                    <h3 class="number">7,50345</h3>
+                    <span>Courses</span>
+                </div>
+            </div>
+            <!-- Global Learner Content End -->
+        </div>
+        <!-- Global Learner Wrapper End -->
+    </div>
+</div>
+<!-- Global Learner End -->
+
+<!-- Access Courses Start -->
+<div class="section access-course-section section-padding-02">
+    <div class="container">
+        <!-- Access Courses Wrapper Start -->
+        <div class="access-course-wrapper">
+            <div class="row">
+                <div class="col-xl-6">
+                    <!-- Access Courses Image Start -->
+                    <div class="access-course-img">
+                        <img src="{% static 'School/assets/images/access-img.png' %}" alt="">
+                    </div>
+                    <!-- Access Courses Image End -->
+                </div>
+                <div class="col-xl-6">
+                    <!-- Access Courses Content Start -->
+                    <div class="access-course-content">
+                        <h2 class="title">MEET OUR PRINCIPAL</h2>
+                        <ul>
+                            <li>
+                                <span class="text">
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad aliquid aperiam aspernatur
+                                    commodi consectetur culpa cumque debitis, doloremque eius et facere hic iure laboriosam
+                                    obcaecati quas quis ratione sequi unde.</p>
+                                </span>
+                            </li>
+                        </ul>
+                        <a href="{% url 'Portal:login' %}">Get Started Now</a>
+                    </div>
+                    <!-- Access Courses Content End -->
+                </div>
+            </div>
+        </div>
+        <!-- Access Courses Wrapper End -->
+    </div>
+</div>
+<!-- Access Courses End -->
+
+<!-- Testimonial Start -->
+<div class="section testimonial-section section-padding">
+    <div class="container">
+        <div class="section-title text-center">
+            <h2 class="title">This is what our parents <br> have to say</h2>
+        </div>
+        <!-- Testimonial Wrapper Start -->
+        <div class="testimonial-wrapper swiper-container testimonial-active">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <!-- Single Testimonial Start -->
+                    <div class="single-testimonial">
+                        <div class="testimonial-img">
+                            <img src="{% static 'School/assets/images/testimonial/testimonial-1.jpg' %}" alt="">
+                        </div>
+                        <div class="testimonial-content color-1">
+                            <p>I believe in lifelong learning and they are a great place to learn from experts. I have lot of recommend it</p>
+                            <div class="testimonial-bottom">
+                                <div class="name-degree">
+                                    <span class="name">James Smeeth</span>
+                                    <span class="degree">Student Biology</span>
+                                </div>
+                                <span><i class="flaticon-straight-quotes"></i></span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Single Testimonial End -->
+                </div>
+                <div class="swiper-slide">
+                    <!-- Single Testimonial Start -->
+                    <div class="single-testimonial">
+                        <div class="testimonial-img">
+                            <img src="{% static 'School/assets/images/testimonial/testimonial-2.jpg' %}" alt="">
+                        </div>
+                        <div class="testimonial-content color-2">
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod tempor incididunt labore</p>
+                            <div class="testimonial-bottom">
+                                <div class="name-degree">
+                                    <span class="name">Leo Marea</span>
+                                    <span class="degree">Student Math</span>
+                                </div>
+                                <span><i class="flaticon-straight-quotes"></i></span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Single Testimonial End -->
+                </div>
+                <div class="swiper-slide">
+                    <!-- Single Testimonial Start -->
+                    <div class="single-testimonial">
+                        <div class="testimonial-img">
+                            <img src="{% static 'School/assets/images/testimonial/testimonial-3.jpg' %}" alt="">
+                        </div>
+                        <div class="testimonial-content color-3">
+                            <p>I believe in lifelong learning and they are a great place to learn from experts. I have lot of recommend it</p>
+                            <div class="testimonial-bottom">
+                                <div class="name-degree">
+                                    <span class="name">John Dowson</span>
+                                    <span class="degree">Student Physics</span>
+                                </div>
+                                <span><i class="flaticon-straight-quotes"></i></span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Single Testimonial End -->
+                </div>
+                <div class="swiper-slide">
+                    <!-- Single Testimonial Start -->
+                    <div class="single-testimonial">
+                        <div class="testimonial-img">
+                            <img src="{% static 'School/assets/images/testimonial/testimonial-4.jpg' %}" alt="">
+                        </div>
+                        <div class="testimonial-content color-4">
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod tempor incididunt labore</p>
+                            <div class="testimonial-bottom">
+                                <div class="name-degree">
+                                    <span class="name">Mikel Haris</span>
+                                    <span class="degree">Student History </span>
+                                </div>
+                                <span><i class="flaticon-straight-quotes"></i></span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Single Testimonial End -->
+                </div>
+
+            </div>
+            <!-- Add Pagination -->
+            <div class="testimonial-arrow swiper-button-next"></div>
+            <div class="testimonial-arrow swiper-button-prev"></div>
+
+            <div class="swiper-pagination"></div>
+        </div>
+        <!-- Testimonial Wrapper End -->
+    </div>
+</div>
+<!-- Testimonial End -->
+
+<!-- Blog Start -->
+<div class="section blog-section section-padding">
+    <div class="container">
+        <div class="blog-wrapper">
+            <!-- Section Title Start -->
+            <div class="section-title text-center">
+                <h2 class="title">Popular Articles & what going on</h2>
+            </div>
+            <!-- Section Title End -->
+            <!-- Blog Wrapper Start -->
+            <div class="blog-content-wrapper">
+                <div class="row">
+                    <div class="col-lg-4 col-md-6 col-sm-6">
+                        <!-- Single Blog Start -->
+                        <div class="single-blog">
+                            <!-- Blog Image Start -->
+                            <div class="blog-image">
+                                <a href="blog-details.html"><img src="{% static 'School/assets/images/blog/blog-1.jpg' %}" alt="blog"></a>
+                            </div>
+                            <!-- Blog Image End -->
+                            <!-- Blog Content Start -->
+                            <div class="blog-content">
+                                <div class="blog-author-category">
+                                    <a class="category color-1" href="#">Health</a>
+                                    <div class="blog-author">
+                                        <img src="{% static 'School/assets/images/courses/author-1.jpg' %}" alt="author">
+                                        <h4 class="name"><a href="#">Mick Harris</a></h4>
+                                    </div>
+                                </div>
+                                <h3 class="title"><a href="blog-details.html">Educational technology and mobile learning</a></h3>
+                                <a class="read-more" href="blog-details.html">Read More</a>
+                            </div>
+                            <!-- Blog Content End -->
+                        </div>
+                        <!-- Single Blog End -->
+                    </div>
+                    <div class="col-lg-4 col-md-6 col-sm-6">
+                        <!-- Single Blog Start -->
+                        <div class="single-blog">
+                            <!-- Blog Image Start -->
+                            <div class="blog-image">
+                                <a href="blog-details.html"><img src="{% static 'School/assets/images/blog/blog-2.jpg' %}" alt="blog"></a>
+                            </div>
+                            <!-- Blog Image End -->
+                            <!-- Blog Content Start -->
+                            <div class="blog-content">
+                                <div class="blog-author-category">
+                                    <a class="category color-2" href="#">Health</a>
+                                    <div class="blog-author">
+                                        <img src="{% static 'School/assets/images/courses/author-1.jpg' %}" alt="author">
+                                        <h4 class="name"><a href="#">Mick Harris</a></h4>
+                                    </div>
+                                </div>
+                                <h3 class="title"><a href="#">We are changing the way the world learns</a></h3>
+                                <a class="read-more" href="blog-details.html">Read More</a>
+                            </div>
+                            <!-- Blog Content End -->
+                        </div>
+                        <!-- Single Blog End -->
+                    </div>
+                    <div class="col-lg-4 col-md-6 col-sm-6">
+                        <!-- Single Blog Start -->
+                        <div class="single-blog">
+                            <!-- Blog Image Start -->
+                            <div class="blog-image">
+                                <a href="blog-details.html"><img src="{% static 'School/assets/images/blog/blog-3.jpg' %}" alt="blog"></a>
+                            </div>
+                            <!-- Blog Image End -->
+                            <!-- Blog Content Start -->
+                            <div class="blog-content">
+                                <div class="blog-author-category">
+                                    <a class="category color-3" href="#">Health</a>
+                                    <div class="blog-author">
+                                        <img src="{% static 'School/assets/images/courses/author-1.jpg' %}" alt="author">
+                                        <h4 class="name"><a href="#">Mick Harris</a></h4>
+                                    </div>
+                                </div>
+                                <h3 class="title"><a href="blog-details.html">Guide to visas and funding to study in the UK</a></h3>
+                                <a class="read-more" href="blog-details.html">Read More</a>
+                            </div>
+                            <!-- Blog Content End -->
+                        </div>
+                        <!-- Single Blog End -->
+                    </div>
+                </div>
+            </div>
+            <!-- Blog Wrapper End -->
+        </div>
+
+    </div>
+</div>
+<!-- Blog End -->
+
+<!-- Call to Action Start -->
+<div class="section call-to-action-section">
+    <div class="container">
+        <!-- Call to Action Wrapper Start -->
+        <div class="call-to-action-wrapper">
+
+            <!-- Call to Action Image Start -->
+            <div class="call-to-action-image">
+                <div class="image">
+                    <img src="{% static 'School/assets/images/cta-img.png' %}" alt="">
+                </div>
+            </div>
+            <!-- Call to Action Image End -->
+
+            <!-- Call to Action Content Start -->
+            <div class="call-to-action-content">
+                <h3>Admission is currently ongoing into the upcoming session</h3>
+                <a class="btn" href="{% url 'Portal:register' %}">Apply Now</a>
+            </div>
+            <!-- Call to Action Content End -->
+
+        </div>
+        <!-- Call to Action Wrapper End -->
+    </div>
+</div>
+<!-- Call to Action End -->
+
+{% endblock %}

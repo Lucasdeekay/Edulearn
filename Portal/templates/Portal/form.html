@@ -1,0 +1,41 @@
+{% load widget_tweaks %}
+
+{% for hidden_field in form.hidden_fields %}
+{{ hidden_field }}
+{% endfor %}
+
+{% if form.non_field_errors %}
+<div class="alert alert-danger" role="alert">
+    {% for error in form.non_field_errors %}
+    {{ error }}
+    {% endfor %}
+</div>
+{% endif %}
+
+{% for field in form.visible_fields %}
+<div class="{% if field.name == 'sex' or field.name == 'dob' %} col-sm-6 {% else %} col-sm-12 {% endif %}">
+
+    <div class="single-form">
+        {% if form.is_bound %}
+        {% if field.errors %}
+        {% render_field field class="is-invalid" %}
+    </div>
+    {% for error in field.errors %}
+    <div class="invalid-feedback">
+        {{ error }}
+    </div>
+    {% endfor %}
+    <div class="single-form">
+        {% else %}
+        {% render_field field class="is-valid" %}
+        {% endif %}
+        {% else %}
+        {% render_field field class="" %}
+        {% endif %}
+    </div>
+
+    {% if field.help_text %}
+    <small class="form-text text-muted">{{ field.help_text }} <small style="color: red">*</small></small>
+    {% endif %}
+</div>
+{% endfor %}

@@ -1,0 +1,91 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+<title>Register</title>
+{% endblock %}
+
+{% block content %}
+ <!-- Hero Start -->
+<div class="hero-section-2 section" style="background-image: url({% static 'School/assets/images/hero-2.jpg' %});">
+
+    <div class="container">
+        <div class="row d-flex align-items-center">
+            <div class="col-lg-7">
+                <!-- Hero Content Start -->
+                <div class="hero-content-2">
+                    <h2 class="title">Build skills with courses and degrees from our courses</h2>
+                </div>
+                <!-- Hero Content End -->
+            </div>
+            <div class="col-lg-5 mb-5 justify-content-lg-end">
+                <div class="hero-form-2">
+                    <div class="hero-form-2-wrapper">
+                        <div class="heading-wrapper text-center">
+                            <span class="sub-title">Send your queries</span>
+                            <h3 class="title">Get in Touch!</h3>
+                        </div>
+                        <!-- Start Message area -->
+                        {% for message in messages %}
+                        {% if message.tags == "success" %}
+                        <section class="my_account_area pt--80 pb--50 bg--white" id="suc-sec">
+                            <div class="container">
+                                <div class="row d-flex justify-content-center">
+                                    <div class="col-sm-6">
+                                        <article class="message is-success">
+                                            <div class="message-header">
+                                                <p>Success</p>
+                                                <button class="delete" aria-label="delete"></button>
+                                            </div>
+                                            <div class="message-body">
+                                                <em>{{ message }}</em>
+                                            </div>
+                                        </article>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                        {% else %}
+                        <section class="my_account_area pt--80 pb--50 bg--white" id="err-sec">
+                            <div class="container">
+                                <div class="row d-flex justify-content-center">
+                                    <div class="col-sm-6">
+                                        <article class="message is-danger">
+                                            <div class="message-header">
+                                                <p>Error</p>
+                                                <button class="delete" aria-label="delete"></button>
+                                            </div>
+                                            <div class="message-body">
+                                                <em>{{ message }}</em>
+                                            </div>
+                                        </article>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                        {% endif %}
+                        {% endfor %}
+                        <!-- End Message area -->
+                        <form action="" method="post">
+                            {% csrf_token %}
+                            <div class="row">
+                                {% include 'Portal/form.html' with form=form %}
+                            </div>
+                            <div class="col-sm-12">
+                                <!-- Single Form Start -->
+                                <div class="form-btn">
+                                    <button class="btn" type="submit">Submit</button>
+                                </div>
+                                <!-- Single Form End -->
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+<!-- Hero End -->
+{% endblock %}
