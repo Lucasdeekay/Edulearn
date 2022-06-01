@@ -1,8 +1,10 @@
 from rest_framework import viewsets
 
-from Portal.models import Student, Teacher, Performance, Passcode, Person, Subject, Result, DailyReport, Score
+from Portal.models import Student, Teacher, Performance, Passcode, Person, Subject, Result, DailyReport, Score, Reply, \
+    Message
 from Portal.serializers import StudentSerializer, TeacherSerializer, PerformanceSerializer, PasscodeSerializer, \
-    PersonSerializer, SubjectSerializer, ResultSerializer, DailyReportSerializer, ScoreSerializer
+    PersonSerializer, SubjectSerializer, ResultSerializer, DailyReportSerializer, ScoreSerializer, ReplySerializer, \
+    MessageSerializer
 
 
 class PersonAPIView(viewsets.ModelViewSet):
@@ -48,3 +50,13 @@ class ScoreAPIView(viewsets.ModelViewSet):
 class ResultAPIView(viewsets.ModelViewSet):
     serializer_class = ResultSerializer
     queryset = Result.objects.all()
+
+
+class ReplyAPIView(viewsets.ModelViewSet):
+    serializer_class = ReplySerializer
+    queryset = Reply.objects.all()
+
+
+class MessageAPIView(viewsets.ModelViewSet):
+    serializer_class = MessageSerializer
+    queryset = Message.objects.all()

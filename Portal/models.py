@@ -120,3 +120,28 @@ class Result(models.Model):
 
     def __str__(self):
         return {self.student}
+
+
+class Reply(models.Model):
+    person = models.ForeignKey(Person, on_delete=models.CASCADE)
+    reply = models.CharField(max_length=1000)
+    date = models.DateTimeField()
+    is_read = models.BooleanField(default=False)
+
+    def __str__(self):
+        return f'{self.reply}'
+
+
+class Message(models.Model):
+    sender = models.ForeignKey(Person, on_delete=models.CASCADE, related_name="sender")
+    receiver = models.ForeignKey(Person, on_delete=models.CASCADE, related_name="receiver")
+    message = models.CharField(max_length=1000)
+    date = models.DateTimeField()
+    reply = models.ManyToManyField(Reply)
+
+
+    def __str__(self):
+        return f'{self.message}'
+
+    def draft(self):
+        return self.message[:250]

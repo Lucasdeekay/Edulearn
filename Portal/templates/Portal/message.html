@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block title %}
-<title>Profile</title>
+<title>Chat</title>
 {% endblock %}
 
 {% block user_image %}
@@ -37,7 +37,7 @@
             <div class="row">
                 <div class="col-lg-6">
                     <div class="page-header-left">
-                        <h3>Profile
+                        <h3>Message
                             <small>Edulearn Student Portal</small>
                         </h3>
                     </div>
@@ -45,7 +45,7 @@
                 <div class="col-lg-6">
                     <ol class="breadcrumb pull-right">
                         <li class="breadcrumb-item"><a href="{% url 'Portal:dashboard' %}"><i data-feather="home"></i></a></li>
-                        <li class="breadcrumb-item active">Profile</li>
+                        <li class="breadcrumb-item active">Message</li>
                     </ol>
                 </div>
             </div>
@@ -62,7 +62,7 @@
                         <ul class="nav nav-tabs tab-coupon" id="myTab" role="tablist">
                             <li class="nav-item"><a class="nav-link active show" id="account-tab" data-bs-toggle="tab"
                                                     href="#account" role="tab" aria-controls="account"
-                                                    aria-selected="true" data-original-title="" title="">Profile</a>
+                                                    aria-selected="true" data-original-title="" title="">Send Message</a>
                             </li>
                         </ul>
                         <div class="tab-content" id="myTabContent">
@@ -74,7 +74,7 @@
                                     {% include 'Portal/django_form.html' with form=form %}
                                     <div class="form-group row pull-right">
                                         <div>
-                                            <button type="submit" class="btn btn-primary">Save</button>
+                                            <button type="submit" class="btn btn-primary">Send</button>
                                         </div>
                                     </div>
                                 </form>

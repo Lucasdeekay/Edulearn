@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block title %}
-<title>Profile</title>
+<title>Chat Messages</title>
 {% endblock %}
 
 {% block user_image %}
@@ -26,7 +26,6 @@
 {% endblock %}
 
 
-
 {% block content %}
 
 <div class="page-body">
@@ -37,15 +36,17 @@
             <div class="row">
                 <div class="col-lg-6">
                     <div class="page-header-left">
-                        <h3>Profile
-                            <small>Edulearn Student Portal</small>
+                        <h3>Chat Messages
+                            <small>Edulearn Student Profile</small>
                         </h3>
                     </div>
                 </div>
                 <div class="col-lg-6">
                     <ol class="breadcrumb pull-right">
-                        <li class="breadcrumb-item"><a href="{% url 'Portal:dashboard' %}"><i data-feather="home"></i></a></li>
-                        <li class="breadcrumb-item active">Profile</li>
+                        <li class="breadcrumb-item"><a href="{% url 'Portal:dashboard' %}"><i
+                                data-feather="home"></i></a></li>
+                        <li class="breadcrumb-item"><a href="{% url 'Portal:chat' %}">Chat</a></li>
+                        <li class="breadcrumb-item"><a href="{% url 'Portal:reply_message' %}">Chat Messages</a></li>
                     </ol>
                 </div>
             </div>
@@ -62,10 +63,28 @@
                         <ul class="nav nav-tabs tab-coupon" id="myTab" role="tablist">
                             <li class="nav-item"><a class="nav-link active show" id="account-tab" data-bs-toggle="tab"
                                                     href="#account" role="tab" aria-controls="account"
-                                                    aria-selected="true" data-original-title="" title="">Profile</a>
+                                                    aria-selected="true" data-original-title="" title="">Chat Messages</a>
                             </li>
                         </ul>
-                        <div class="tab-content" id="myTabContent">
+                        <div class="my-2">
+                            <img alt="profile image"
+                             class="img-20 rounded-circle lazyloaded blur-up"
+                             data-src="{{ message.sender.image }}">
+                            <b>
+                                {{ message.message }}
+                            </b>
+                        </div>
+                        {% for reply in message.reply %}
+                        <div class="my-2">
+                            <img alt="profile image"
+                             class="img-20 rounded-circle lazyloaded blur-up"
+                             data-src="{{ reply.person.image }}">
+                            <b style="color:{% if reply.person.role == 'Student' %}#ff1f59{% else %}black{% endif %}">
+                                {{ reply.reply }}
+                            </b>
+                        </div>
+                        {% endfor %}
+                        <div class="tab-content my-4" id="myTabContent">
                             <div class="tab-pane fade active show" id="account" role="tabpanel"
                                  aria-labelledby="account-tab">
                                 <form class="needs-validation user-add" method="post" action=""
@@ -74,7 +93,7 @@
                                     {% include 'Portal/django_form.html' with form=form %}
                                     <div class="form-group row pull-right">
                                         <div>
-                                            <button type="submit" class="btn btn-primary">Save</button>
+                                            <button type="submit" class="btn btn-primary">Reply</button>
                                         </div>
                                     </div>
                                 </form>

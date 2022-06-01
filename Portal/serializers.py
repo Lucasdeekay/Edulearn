@@ -1,6 +1,7 @@
 from rest_framework import serializers
 
-from Portal.models import Student, Performance, Teacher, Passcode, Person, Subject, Result, DailyReport, Score
+from Portal.models import Student, Performance, Teacher, Passcode, Person, Subject, Result, DailyReport, Score, Reply, \
+    Message
 
 
 class PersonSerializer(serializers.ModelSerializer):
@@ -54,4 +55,16 @@ class ScoreSerializer(serializers.ModelSerializer):
 class ResultSerializer(serializers.ModelSerializer):
     class Meta:
         model = Result
+        fields = '__all__'
+
+
+class ReplySerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Reply
+        fields = '__all__'
+
+
+class MessageSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Message
         fields = '__all__'

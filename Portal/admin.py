@@ -1,6 +1,7 @@
 from django.contrib import admin
 
-from Portal.models import Student, Teacher, Performance, Passcode, Person, Subject, Result, DailyReport, Score
+from Portal.models import Student, Teacher, Performance, Passcode, Person, Subject, Result, DailyReport, Score, Reply, \
+    Message
 
 
 class PersonAdmin(admin.ModelAdmin):
@@ -40,6 +41,14 @@ class ResultAdmin(admin.ModelAdmin):
     list_display = ('student',)
 
 
+class ReplyAdmin(admin.ModelAdmin):
+    list_display = ('person', 'reply', 'date', 'is_read')
+
+
+class MessageAdmin(admin.ModelAdmin):
+    list_display = ('sender', 'receiver', 'message', 'date',)
+
+
 admin.site.register(Person, PersonAdmin)
 admin.site.register(Teacher, TeacherAdmin)
 admin.site.register(Student, StudentAdmin)
@@ -49,3 +58,5 @@ admin.site.register(DailyReport, DailyReportAdmin)
 admin.site.register(Subject, SubjectAdmin)
 admin.site.register(Score, ScoreAdmin)
 admin.site.register(Result, ResultAdmin)
+admin.site.register(Reply, ReplyAdmin)
+admin.site.register(Message, MessageAdmin)

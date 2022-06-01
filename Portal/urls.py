@@ -3,7 +3,7 @@ from rest_framework import routers
 
 from Portal import views
 from Portal.api_views import StudentAPIView, PerformanceAPIView, TeacherAPIView, PasscodeAPIView, PersonAPIView, \
-    SubjectAPIView, ResultAPIView, DailyReportAPIView, ScoreAPIView
+    SubjectAPIView, ResultAPIView, DailyReportAPIView, ScoreAPIView, ReplyAPIView, MessageAPIView
 
 router = routers.DefaultRouter()
 router.register('student', StudentAPIView)
@@ -15,6 +15,8 @@ router.register('password', PasscodeAPIView)
 router.register('subject', SubjectAPIView)
 router.register('score', ScoreAPIView)
 router.register('result', ResultAPIView)
+router.register('reply', ReplyAPIView)
+router.register('message', MessageAPIView)
 
 app_name = "Portal"
 
@@ -35,6 +37,10 @@ urlpatterns = [
     path("review-students", views.review_students, name="review_students"),
     path("record-daily-report", views.record_daily_report, name="record_daily_report"),
     path("record-score", views.record_score, name="record_score"),
+    path("message", views.message, name="message"),
+    path("chat", views.chat, name="chat"),
+    path("chat/delete_message<int:id>", views.delete_message, name="delete_message"),
+    path("chat/reply_message<int:id>", views.reply_message, name="reply_message"),
     path("settings/profile", views.profile_settings, name="profile_settings"),
     path("settings/reset-password", views.reset_password, name="reset_password"),
     path("api/", include(router.urls)),

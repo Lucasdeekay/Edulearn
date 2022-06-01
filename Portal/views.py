@@ -16,8 +16,8 @@ from django.utils import timezone
 from Edulearn.settings import EMAIL_HOST_USER
 from Portal.forms import RegistrationForm, LoginForm, ForgotPasswordForm, PasswordRetrievalForm, ChangePasswordForm, \
     ProfileForm, SelectSessionPeriodForm, StudentRegistrationForm, StudentAssessmentForm, ResultForm, \
-    SelectSessionPeriodAndStudentForm
-from Portal.models import Student, Passcode, Teacher, Person, DailyReport, Result, Score, Performance
+    SelectSessionPeriodAndStudentForm, MessageForm, ReplyForm
+from Portal.models import Student, Passcode, Teacher, Person, DailyReport, Result, Score, Performance, Message, Reply
 
 random = random.Random()
 
@@ -594,6 +594,81 @@ def review_results(request):
             form = SelectSessionPeriodAndStudentForm()
             context = {'form': form, 'person': person, 'score': ''}
             return render(request, 'Portal/review_results.html', context)
+    else:
+        return HttpResponseRedirect(reverse("Portal:login"))
+
+
+def message(request):
+    if request.user.is_authenticated and not request.user.is_superuser:
+        person = get_object_or_404(Person, user=request.user)
+        if request.method == 'POST':
+            form = MessageForm(request.POST)
+            if form.is_valid():
+                message = form.cleaned_data['message'].strip()
+                student = form.cleaned_data['student'].strip()
+
+                Message.objects.create(sender=person, receiver=get_object_or_404(Student, person=student),
+                                       message=message, datetime=timezone.now())
+
+                messages.success(request, "Profile successfully edited")
+                return HttpResponseRedirect(reverse("Portal:message"))
+            else:
+                messages.error(request, "Invalid form submission.")
+                return HttpResponseRedirect(reverse("Portal:message"))
+        else:
+            form = MessageForm()
+            context = {'form': form, 'person': person}
+            return render(request, 'Portal/message.html', context)
+    else:
+        return HttpResponseRedirect(reverse("Portal:login"))
+
+
+def chat(request):
+    if request.user.is_authenticated and not request.user.is_superuser:
+        person = get_object_or_404(Person, user=request.user)
+        try:
+            if person.role == 'Staff':
+                all_messages = get_object_or_404(Message, sender=person).order_by('-date')
+            else:
+                all_messages = get_object_or_404(Message, receiver=person).order_by('-date')
+        except Exception:
+            all_messages = ''
+        context = {'all_messages': all_messages, 'person': person,}
+        return render(request, 'Portal/chat.html', context)
+    else:
+        return HttpResponseRedirect(reverse("Portal:login"))
+
+
+def delete_message(request, id):
+    if request.user.is_authenticated and not request.user.is_superuser:
+        message = get_object_or_404(Message, id=id)
+        message.delete()
+        return HttpResponseRedirect(reverse("Portal:chat"))
+    else:
+        return HttpResponseRedirect(reverse("Portal:login"))
+
+
+def reply_message(request, id):
+    if request.user.is_authenticated and not request.user.is_superuser:
+        person = get_object_or_404(Person, user=request.user)
+        message = get_object_or_404(Message, id=id)
+        if request.method == 'POST':
+            form = ReplyForm(request.POST)
+            if form.is_valid():
+                reply = form.cleaned_data['reply'].strip()
+                new_reply = Reply.objects.create(person=person, reply=reply, date=timezone.now())
+
+                message.reply.add(new_reply)
+
+                context = {'message': message, 'person': person, 'form': form}
+                return render(request, 'Portal/reply_message.html', context)
+            else:
+                messages.error(request, "Invalid form submission.")
+                return HttpResponseRedirect(reverse("Portal:reply_message"))
+        else:
+            form = ReplyForm()
+            context = {'message': message, 'person': person, 'form': form}
+            return render(request, 'Portal/reply_message.html', context)
     else:
         return HttpResponseRedirect(reverse("Portal:login"))
 

@@ -199,10 +199,13 @@ class RegistrationForm(forms.Form):
     )
     address = forms.CharField(
         max_length=256,
+        help_text='Maximum of 256 characters',
         widget=forms.Textarea(
             attrs={
                 'placeholder': 'Enter address',
                 'required': '',
+                'rows': 4,
+                'cols': 15,
             }
         )
     )
@@ -360,9 +363,12 @@ class ProfileForm(forms.Form):
     )
     address = forms.CharField(
         max_length=256,
+        help_text='Maximum of 256 characters',
         widget=forms.Textarea(
             attrs={
                 'placeholder': 'Enter address',
+                'rows': 4,
+                'cols': 15,
             }
         )
     )
@@ -526,10 +532,13 @@ class StudentRegistrationForm(forms.Form):
     )
     address = forms.CharField(
         max_length=256,
+        help_text='Maximum of 256 characters',
         widget=forms.Textarea(
             attrs={
                 'placeholder': 'Enter address',
                 'required': '',
+                'rows': 4,
+                'cols': 15,
             }
         )
     )
@@ -611,9 +620,12 @@ class StudentAssessmentForm(forms.Form):
     )
     report = forms.CharField(
         max_length=500,
+        help_text='Maximum of 500 characters',
         widget=forms.Textarea(
             attrs={
                 'required': '',
+                'rows': 4,
+                'cols': 15,
             }
         )
     )
@@ -664,3 +676,51 @@ class ResultForm(forms.Form):
         student = cleaned_data.get('student')
         subject = cleaned_data.get('subject')
         score = cleaned_data.get('score')
+
+
+class MessageForm(forms.Form):
+    message = forms.CharField(
+        max_length=1000,
+        help_text='Maximum of 1000 characters',
+        widget=forms.Textarea(
+            attrs={
+                'placeholder': 'Enter message',
+                'required': '',
+                'rows': 4,
+                'cols': 15,
+            }
+        )
+    )
+    student = forms.CharField(
+        max_length=256,
+        widget=forms.Select(
+            choices=[('', 'Select Student...')] + [(x.person, x.person) for x in tuple(Student.objects.all())],
+            attrs={
+                'required': '',
+            }
+        )
+    )
+
+    def clean(self):
+        cleaned_data = super(MessageForm, self).clean()
+        message = cleaned_data.get('message')
+        student = cleaned_data.get('student')
+
+
+class ReplyForm(forms.Form):
+    reply = forms.CharField(
+        max_length=1000,
+        help_text='Maximum of 1000 characters',
+        widget=forms.Textarea(
+            attrs={
+                'placeholder': 'Enter reply...',
+                'required': '',
+                'rows': 4,
+                'cols': 15,
+            }
+        )
+    )
+
+    def clean(self):
+        cleaned_data = super(MessageForm, self).clean()
+        reply = cleaned_data.get('reply')
